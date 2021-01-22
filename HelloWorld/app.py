@@ -1,7 +1,10 @@
-i = 1
-j = 7
-while i <= 9:
-    for n in range(0, 3):
-        print("I=", i, "J=", j-n)
-    i = i + 2
-    j = j + 2
+# Lanche
+
+price = [4.00, 4.50, 5.00, 2.00, 1.50]
+
+x = input().split()
+
+a, b = x
+a, b = int(a), int(b)
+value = price[a-1]*b
+print('Total: R$ {:.2f}'.format(value))
