@@ -1,8 +1,3 @@
-import sys
-
-vet = [1001]
-
-
 while True:
     N = list(input())[:1000]
     a = 0
