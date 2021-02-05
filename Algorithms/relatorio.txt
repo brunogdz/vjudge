@@ -1,0 +1,71 @@
+O algoritmo do Quick-Union
+
+um array de N posicoes 
+o valor da posicao representa o pai da posicao do array
+
+para encontrar o pai, verifica se o numero da raiz = a posicao no array
+
+1 é pai de 2 e 4, 4 é pai de 3. 
+        0  1  2  3  4
+id[] = [0, 1  1  4  1]
+
+3 é filho de 4
+verifica na posicao id[4] = 4,
+como na posicao 4 não é 4, entende-se que o 4 é filho do numero do id e assim sem ciclos
+
+e para fazer a uniao de outros componentes é só mudar o valor
+
+        0  1  2  3  4  5  6  7 
+id[] = [6, 1, 1, 4, 1, 5, 6, 7]
+
+se quisesse colocar o 1 sendo filho do 6, é só substituir no id[1] = 6
+
+        0  1  2  3  4  5  6  7 
+id[] = [6, 6, 1, 4, 1, 5, 6, 7]
+
+
+        6
+   0        1
+        2       4
+                    3
+
+para fazer a uniao verifica quem é a raiz de o elemento x e do elemento y
+e muda na posicao id[x] = raiz de y.
+
+Se quiséssemos ligar por exemplo 2 e 0, supondo que o 1 fosse pai do 2 e o 6 fosse pai do 0 e não tivesse feito a união com o 6 e 1
+
+x = raiz de 2
+x = 1
+y = raiz de 0
+y = 6
+id[1] = 6
+
+Quick-find x Quick-Union
+
+No quick-Union as árvores podem ser muito altas, e assim sendo muito custoso pois teria N de acessos de vetores
+
+No quick-find o Union é custoso pois tem o N arrays de acesso
+
+
+
+Algoritmo do Quick-Union com peso
+
+Sem o peso as arvores poderiam ser muito grandes sendo as subárvores
+
+Com o peso, ele sempre coloca sempre as menores arvores como subarvores, escolhendo assim a melhor alternativa.
+
+
+Agora para fazer a união leva-se em consideração se o valor é menor ou maior que o da raiz e teremos um vetor auxiliar para contar quantas arvores na raiz estao ligadas
+
+se a raiz de P for menor que a raiz de Q
+    na posicao da raiz de P = o valor da raiz de Q
+    vetorAux[raiz de Q] += vetorAux[raiz de P]
+
+se a raiz de P for maior que a raiz de Q
+    na posicao da raiz de Q = raiz de P 
+    vetorAux[raiz de P] += vetorAux[raiz de Q]
+
+Vantagem que sua profundidade vai ser logN de base 2
+entao se tiver 10 nós, vai dar o valor aproximado a 3, ou seja a profundidade é igual a 3.
+Isso porque verifica aonde deve ser colocado no nó da árvore, assim diminuindo sua profundidade pois procura a melhor posição.
+
